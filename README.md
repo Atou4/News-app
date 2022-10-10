@@ -1,4 +1,4 @@
-                                                                              NEWS APP
+                                                                           NEWS APP
 
 News app concept made with flutter using newsapi.org.
 
