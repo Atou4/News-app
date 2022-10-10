@@ -4,7 +4,7 @@ import 'package:news_app/utils/theme.dart';
 import 'package:news_app/views/bottom_nav.dart';
 
 
-void main() async {
+void main() async { 
  
   runApp(const App(),
   );
