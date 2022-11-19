@@ -4,6 +4,7 @@ import 'package:news_app/views/Headlines/headline_widget.dart';
 
 class HeadlinesList extends StatelessWidget {
   List<Article> headlines;
+
   HeadlinesList({Key? key, required this.headlines}) : super(key: key);
 
   @override

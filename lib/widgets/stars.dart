@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Stars extends StatelessWidget {
   const Stars({super.key, required this.likes, this.size = 10.0});
+
   final int likes;
   final double size;
 
@@ -33,7 +34,7 @@ class Stars extends StatelessWidget {
             FittedBox(
               child: Text(
                 '$likes reviews',
-               style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.caption,
               ),
             )
           ],

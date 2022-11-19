@@ -10,7 +10,6 @@ import '../../models/articles.dart';
 import '../../models/categories.dart';
 import '../../services/api_service.dart';
 import '../../utils/colors.dart';
-import 'articles_widget.dart';
 
 class Discoverpage extends StatefulWidget {
   const Discoverpage({
@@ -24,7 +23,6 @@ class Discoverpage extends StatefulWidget {
 class DiscoverpageState extends State<Discoverpage> {
   late List<CategorieModel> categories = <CategorieModel>[];
   late String countryname = "US";
-  
 
   @override
   void initState() {
@@ -46,8 +44,10 @@ class DiscoverpageState extends State<Discoverpage> {
                 backgroundColor: AppColors.black,
                 title: Text(
                   'Choose  a country',
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                      color: AppColors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.justify,
                 ),
               ),
@@ -66,9 +66,10 @@ class DiscoverpageState extends State<Discoverpage> {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Text(
                         countryCode.name.toString(),
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -99,80 +100,74 @@ class DiscoverpageState extends State<Discoverpage> {
         ),
       ),
       body: FutureBuilder(
-        future: articles.getArticles("news"),
-        builder: (context, AsyncSnapshot<List<Article>> snapshot) {
-          if (snapshot.hasData) {
-            List<Article>? articles = snapshot.data;
-          return SingleChildScrollView(
-            clipBehavior: Clip.none,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  Text(
-                    "Discover ",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.01,
-                  ),
-                  Text(
-                    "News from all over the world",
-                    style: Theme.of(context)
-                        .textTheme
-                        .caption!
-                        .copyWith(color: AppColors.grey),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  SearchField(
-                    size: size,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  Row(
+          future: articles.getArticles("news"),
+          builder: (context, AsyncSnapshot<List<Article>> snapshot) {
+            if (snapshot.hasData) {
+              List<Article>? articles = snapshot.data;
+              return SingleChildScrollView(
+                clipBehavior: Clip.none,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                          child: SizedBox(
-                              height: 40, child: Catlist(cats: categories))),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      Text(
+                        "Discover ",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Text(
+                        "News from all over the world",
+                        style: Theme.of(context).textTheme.caption!.copyWith(color: AppColors.grey),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      SearchField(
+                        size: size,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(child: SizedBox(height: 40, child: Catlist(cats: categories))),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.03,
+                      ),
+                      Text(
+                        "Variety of articles ",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Column(
+                        children: [
+                          Articleslist(articles: articles),
+                        ],
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  Text(
-                    "Variety of articles ",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  Column(
-                    children: [
-                      Articleslist(articles: articles),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
-          }
-          return const Center(
+                ),
+              );
+            }
+            return const Center(
               child: CircularProgressIndicator(
                 color: AppColors.black,
               ),
             );
-        }
-      ),
+          }),
     );
   }
 }

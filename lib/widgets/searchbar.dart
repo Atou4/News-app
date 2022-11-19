@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/views/articles/articles_list.dart';
-import 'package:news_app/views/articles/discover_page.dart';
 import 'package:news_app/views/bottom_nav.dart';
 
 import '../models/articles.dart';
@@ -70,7 +69,8 @@ class _SearchFieldState extends State<SearchField> {
 
 class MySearchdelegate extends SearchDelegate {
   ApiService articles = ApiService("us");
-  String keyword="key";
+  String keyword = "key";
+
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -96,8 +96,7 @@ class MySearchdelegate extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const BottomNav()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const MainScreen()));
         },
         icon: const Icon(CupertinoIcons.chevron_back),
         color: AppColors.black,
@@ -110,10 +109,10 @@ class MySearchdelegate extends SearchDelegate {
       child: FutureBuilder(
         future: articles.getArticles(query),
         builder: (context, snapshot) {
-            List<Article>? articles = snapshot.data;
+          List<Article>? articles = snapshot.data;
           if (!snapshot.hasData) {
             return const Center(
-              child:  CircularProgressIndicator(
+              child: CircularProgressIndicator(
                 backgroundColor: AppColors.black,
               ),
             );
@@ -131,10 +130,10 @@ class MySearchdelegate extends SearchDelegate {
       child: FutureBuilder(
         future: articles.getArticles("keyword"),
         builder: (context, AsyncSnapshot<List<Article>> snapshot) {
-            List<Article>? articles = snapshot.data;
+          List<Article>? articles = snapshot.data;
           if (!snapshot.hasData) {
             return const Center(
-              child:  CircularProgressIndicator(
+              child: CircularProgressIndicator(
                 backgroundColor: AppColors.black,
               ),
             );

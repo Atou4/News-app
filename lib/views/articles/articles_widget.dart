@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../utils/colors.dart';
 
 class Articleswidget extends StatelessWidget {
@@ -11,6 +12,7 @@ class Articleswidget extends StatelessWidget {
   final String publishedAt;
   final String url;
   final String? author;
+
   const Articleswidget(
       {Key? key,
       required this.url,
@@ -88,10 +90,7 @@ class Articleswidget extends StatelessWidget {
                       ),
                       Text(
                         publishedAt.substring(0, 10),
-                        style: Theme.of(context)
-                            .textTheme
-                            .caption!
-                            .copyWith(color: AppColors.grey),
+                        style: Theme.of(context).textTheme.caption!.copyWith(color: AppColors.grey),
                       ),
                     ],
                   ),

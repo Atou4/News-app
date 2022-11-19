@@ -37,8 +37,10 @@ class _HomepageState extends State<Homepage> {
                 backgroundColor: AppColors.black,
                 title: Text(
                   'Choose  a country',
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                      color: AppColors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.justify,
                 ),
               ),
@@ -57,9 +59,10 @@ class _HomepageState extends State<Homepage> {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Text(
                         countryCode.name.toString(),
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -116,8 +119,7 @@ class _HomepageState extends State<Homepage> {
                       children: [
                         ClipRRect(
                           borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(25),
-                              bottomRight: Radius.circular(25)),
+                              bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
                           child: CachedNetworkImage(
                             imageUrl: headlines![0].urlToImage.toString(),
                             placeholder: (context, url) => const Center(
@@ -125,8 +127,7 @@ class _HomepageState extends State<Homepage> {
                                 color: AppColors.black,
                               ),
                             ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
                             fit: BoxFit.fill,
                             height: size.height / 2.25,
                             width: size.width,
@@ -137,8 +138,7 @@ class _HomepageState extends State<Homepage> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25)),
+                                bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
                             gradient: LinearGradient(
                               begin: Alignment.topRight,
                               end: Alignment.bottomLeft,
@@ -164,16 +164,12 @@ class _HomepageState extends State<Homepage> {
                                   width: 120,
                                   decoration: BoxDecoration(
                                     color: Colors.grey.withAlpha(150),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(25)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(25)),
                                   ),
                                   child: Center(
                                     child: Text(
                                       "News of the day",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .copyWith(
+                                      style: Theme.of(context).textTheme.caption!.copyWith(
                                             color: AppColors.white,
                                           ),
                                       textAlign: TextAlign.justify,
@@ -186,14 +182,10 @@ class _HomepageState extends State<Homepage> {
                                 SizedBox(
                                   width: 320,
                                   child: Text(
-                                    headlines[0]
-                                        .title, //"Vip immunization for the us citizens, for the powerful and their cronics in the us sadasdasd.",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6!
-                                        .copyWith(
-                                            color: AppColors.white,
-                                            fontWeight: FontWeight.bold),
+                                    headlines[0].title,
+                                    //"Vip immunization for the us citizens, for the powerful and their cronics in the us sadasdasd.",
+                                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                                        color: AppColors.white, fontWeight: FontWeight.bold),
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 3,
                                   ),
@@ -205,10 +197,7 @@ class _HomepageState extends State<Homepage> {
                                   children: [
                                     Text(
                                       "Learn More",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .button!
-                                          .copyWith(
+                                      style: Theme.of(context).textTheme.button!.copyWith(
                                             color: AppColors.white,
                                           ),
                                       textAlign: TextAlign.justify,
